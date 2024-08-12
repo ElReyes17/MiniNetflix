@@ -1,4 +1,5 @@
 using MiniNetflix.Infrastructure.Persistence;
+using MiniNetflix.Core.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistenceLayer(builder.Configuration);
+builder.Services.AddApplicationLayer();
 builder.Services.AddSession();
 builder.Services.AddDistributedMemoryCache();
 //builder.Services.AddApiVersioningExtension();
