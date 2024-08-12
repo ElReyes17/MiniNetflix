@@ -1,0 +1,18 @@
+﻿using Microsoft.EntityFrameworkCore;
+using PruebaMinimalAPI.Core.Domain.Entities;
+
+namespace PruebaMinimalAPI.Infrastructure.Persistence.Context
+{
+    public class ApplicationContext(DbContextOptions<ApplicationContext> dbContextOptions) : DbContext(dbContextOptions)
+    {
+        public DbSet<Movie> Movie { get; set; }
+        public DbSet<Genre> Genre { get; set; }
+        public DbSet<Producer> Producer { get; set; }
+        public DbSet<MovieGenre> MovieGenre { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationContext).Assembly);
+        }
+    }
+}

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniNetflix", "MiniNetflix\MiniNetflix.csproj", "{BAA003AB-F822-42A6-BB3E-790BB39A80C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniNetflix", "MiniNetflix\MiniNetflix.csproj", "{BAA003AB-F822-42A6-BB3E-790BB39A80C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{156C1BC4-078B-41C9-8388-72CF8F051A35}"
 EndProject
@@ -15,7 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{F745BA09-BD9E-4893-AFAC-E591BF73392D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniNetflix.Core.Application", "MiniNetflix.Core.Application\MiniNetflix.Core.Application.csproj", "{66383695-4907-44D4-8629-41BAEE2F9FAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniNetflix.Core.Application", "MiniNetflix.Core.Application\MiniNetflix.Core.Application.csproj", "{66383695-4907-44D4-8629-41BAEE2F9FAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniNetflix.Core.Domain", "MiniNetflix.Core.Domain\MiniNetflix.Core.Domain.csproj", "{611EDDB2-5CFF-4A87-AC66-852DA96C7C12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniNetflix.Infrastructure.Persistence", "MiniNetflix.Infrastructure.Persistence\MiniNetflix.Infrastructure.Persistence.csproj", "{0C99AA0A-82B7-4F31-8A8B-7DBC8E927835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniNetflix.Infrastructure.Identity", "MiniNetflix.Infrastructure.Identity\MiniNetflix.Infrastructure.Identity.csproj", "{F844A22A-1609-4275-AB03-403993916353}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +37,18 @@ Global
 		{66383695-4907-44D4-8629-41BAEE2F9FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66383695-4907-44D4-8629-41BAEE2F9FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66383695-4907-44D4-8629-41BAEE2F9FAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{611EDDB2-5CFF-4A87-AC66-852DA96C7C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{611EDDB2-5CFF-4A87-AC66-852DA96C7C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{611EDDB2-5CFF-4A87-AC66-852DA96C7C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{611EDDB2-5CFF-4A87-AC66-852DA96C7C12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C99AA0A-82B7-4F31-8A8B-7DBC8E927835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C99AA0A-82B7-4F31-8A8B-7DBC8E927835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C99AA0A-82B7-4F31-8A8B-7DBC8E927835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C99AA0A-82B7-4F31-8A8B-7DBC8E927835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F844A22A-1609-4275-AB03-403993916353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F844A22A-1609-4275-AB03-403993916353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F844A22A-1609-4275-AB03-403993916353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F844A22A-1609-4275-AB03-403993916353}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +60,9 @@ Global
 		{E3B57CE6-553F-4753-89D5-EF0D446D9A47} = {156C1BC4-078B-41C9-8388-72CF8F051A35}
 		{F745BA09-BD9E-4893-AFAC-E591BF73392D} = {11A792E8-E08A-4266-A3FC-1A032F6919A7}
 		{66383695-4907-44D4-8629-41BAEE2F9FAE} = {1B08FA39-3A5E-4163-B199-4D2EF9D714C6}
+		{611EDDB2-5CFF-4A87-AC66-852DA96C7C12} = {1B08FA39-3A5E-4163-B199-4D2EF9D714C6}
+		{0C99AA0A-82B7-4F31-8A8B-7DBC8E927835} = {E3B57CE6-553F-4753-89D5-EF0D446D9A47}
+		{F844A22A-1609-4275-AB03-403993916353} = {E3B57CE6-553F-4753-89D5-EF0D446D9A47}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {543C70E8-80BA-4C80-BC48-DAB5F9EF30E0}
