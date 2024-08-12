@@ -1,8 +1,8 @@
 ﻿
 
-using PruebaMinimalAPI.Core.Domain.Entities;
+using MiniNetflix.Core.Domain.Entities;
 
-namespace PruebaMinimalAPI.Core.Application.Interfaces.Repositories
+namespace MiniNetflix.Core.Application.Interfaces.Repositories
 {
     public interface IGenreRepository : IBaseRepository<Genre> { }
     

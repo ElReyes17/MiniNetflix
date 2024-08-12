@@ -1,6 +1,6 @@
 ﻿
 
-namespace PruebaMinimalAPI.Core.Application
+namespace MiniNetflix.Core.Application
 {
     internal class DependencyInjection
     {

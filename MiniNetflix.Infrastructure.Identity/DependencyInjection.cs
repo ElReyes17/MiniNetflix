@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PruebaMinimalAPI.Infrastructure.Identity
+namespace MiniNetflix.Infrastructure.Identity
 {
     internal class DependencyInjection
     {

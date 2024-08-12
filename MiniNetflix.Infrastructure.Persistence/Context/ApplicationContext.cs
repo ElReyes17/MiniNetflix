@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PruebaMinimalAPI.Core.Domain.Entities;
+using MiniNetflix.Core.Domain.Entities;
 
-namespace PruebaMinimalAPI.Infrastructure.Persistence.Context
+namespace MiniNetflix.Infrastructure.Persistence.Context
 {
     public class ApplicationContext(DbContextOptions<ApplicationContext> dbContextOptions) : DbContext(dbContextOptions)
     {

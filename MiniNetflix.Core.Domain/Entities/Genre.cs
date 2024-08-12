@@ -1,8 +1,8 @@
 ﻿
 
-using PruebaMinimalAPI.Core.Domain.Common;
+using MiniNetflix.Core.Domain.Common;
 
-namespace PruebaMinimalAPI.Core.Domain.Entities
+namespace MiniNetflix.Core.Domain.Entities
 {
     public class Genre : BaseEntity
     {

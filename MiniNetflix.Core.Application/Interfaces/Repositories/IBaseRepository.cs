@@ -1,5 +1,5 @@
 ﻿
-namespace PruebaMinimalAPI.Core.Application.Interfaces.Repositories
+namespace MiniNetflix.Core.Application.Interfaces.Repositories
 {
     public interface IBaseRepository<T> where T : class
     {

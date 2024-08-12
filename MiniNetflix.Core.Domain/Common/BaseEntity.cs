@@ -1,6 +1,6 @@
 ﻿
 
-namespace PruebaMinimalAPI.Core.Domain.Common
+namespace MiniNetflix.Core.Domain.Common
 {
     public class BaseEntity
     {

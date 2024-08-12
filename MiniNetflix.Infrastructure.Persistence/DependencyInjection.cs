@@ -3,11 +3,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PruebaMinimalAPI.Core.Application.Interfaces.Repositories;
-using PruebaMinimalAPI.Infrastructure.Persistence.Context;
-using PruebaMinimalAPI.Infrastructure.Persistence.Repositories;
+using MiniNetflix.Core.Application.Interfaces.Repositories;
+using MiniNetflix.Infrastructure.Persistence.Context;
+using MiniNetflix.Infrastructure.Persistence.Repositories;
 
-namespace PruebaMinimalAPI.Infrastructure.Persistence
+namespace MiniNetflix.Infrastructure.Persistence
 {
     public static class DependencyInjection
     {

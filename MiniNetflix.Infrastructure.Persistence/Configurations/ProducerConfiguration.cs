@@ -2,9 +2,9 @@
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PruebaMinimalAPI.Core.Domain.Entities;
+using MiniNetflix.Core.Domain.Entities;
 
-namespace PruebaMinimalAPI.Infrastructure.Persistence.Configurations
+namespace MiniNetflix.Infrastructure.Persistence.Configurations
 {
     public class ProducerConfiguration : IEntityTypeConfiguration<Producer>
     {

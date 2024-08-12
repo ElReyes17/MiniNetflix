@@ -1,8 +1,8 @@
-﻿using PruebaMinimalAPI.Core.Application.Interfaces.Repositories;
-using PruebaMinimalAPI.Core.Domain.Entities;
-using PruebaMinimalAPI.Infrastructure.Persistence.Context;
+﻿using MiniNetflix.Core.Application.Interfaces.Repositories;
+using MiniNetflix.Core.Domain.Entities;
+using MiniNetflix.Infrastructure.Persistence.Context;
 
-namespace PruebaMinimalAPI.Infrastructure.Persistence.Repositories
+namespace MiniNetflix.Infrastructure.Persistence.Repositories
 {
     public class ProducerRepository(ApplicationContext dbContext) : BaseRepository<Producer>(dbContext), IProducerRepository { }
     
