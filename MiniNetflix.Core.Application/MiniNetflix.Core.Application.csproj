@@ -6,4 +6,27 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MiniNetflix.Core.Domain\MiniNetflix.Core.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Genres\Command\" />
+    <Folder Include="Features\Genres\Query\GetAll\" />
+    <Folder Include="Features\Genres\Query\GetById\" />
+    <Folder Include="Features\MovieGenres\Command\" />
+    <Folder Include="Features\MovieGenres\Query\GetAll\" />
+    <Folder Include="Features\MovieGenres\Query\GetById\" />
+    <Folder Include="Features\Movies\Command\Create\" />
+    <Folder Include="Features\Movies\Command\Delete\" />
+    <Folder Include="Features\Movies\Command\Update\" />
+    <Folder Include="Features\Movies\Query\GetAll\" />
+    <Folder Include="Features\Movies\Query\GetById\" />
+    <Folder Include="Features\Producers\Command\Create\" />
+    <Folder Include="Features\Producers\Command\Delete\" />
+    <Folder Include="Features\Producers\Command\Update\" />
+    <Folder Include="Features\Producers\Query\GetAll\" />
+    <Folder Include="Features\Producers\Query\GetById\" />
+  </ItemGroup>
+
 </Project>

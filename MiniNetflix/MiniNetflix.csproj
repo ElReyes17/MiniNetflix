@@ -11,4 +11,15 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MiniNetflix.Core.Application\MiniNetflix.Core.Application.csproj" />
+    <ProjectReference Include="..\MiniNetflix.Core.Domain\MiniNetflix.Core.Domain.csproj" />
+    <ProjectReference Include="..\MiniNetflix.Infrastructure.Identity\MiniNetflix.Infrastructure.Identity.csproj" />
+    <ProjectReference Include="..\MiniNetflix.Infrastructure.Persistence\MiniNetflix.Infrastructure.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Endpoints\" />
+  </ItemGroup>
+
 </Project>
