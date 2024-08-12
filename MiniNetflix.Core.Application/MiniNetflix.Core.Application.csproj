@@ -11,10 +11,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Genres\Command\" />
+    <Folder Include="Dtos\Genres\" />
+    <Folder Include="Dtos\Movies\" />
+    <Folder Include="Dtos\MovieGenres\" />
+    <Folder Include="Dtos\Accounts\" />
+    <Folder Include="Dtos\Producers\" />
+    <Folder Include="Features\Genres\Command\Create\" />
+    <Folder Include="Features\Genres\Command\Delete\" />
+    <Folder Include="Features\Genres\Command\Update\" />
     <Folder Include="Features\Genres\Query\GetAll\" />
     <Folder Include="Features\Genres\Query\GetById\" />
-    <Folder Include="Features\MovieGenres\Command\" />
+    <Folder Include="Features\MovieGenres\Command\Create\" />
+    <Folder Include="Features\MovieGenres\Command\Delete\" />
+    <Folder Include="Features\MovieGenres\Command\Update\" />
     <Folder Include="Features\MovieGenres\Query\GetAll\" />
     <Folder Include="Features\MovieGenres\Query\GetById\" />
     <Folder Include="Features\Movies\Command\Create\" />
