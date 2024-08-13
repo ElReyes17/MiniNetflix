@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MiniNetflix.Core.Application.Interfaces.Repositories;
+using MiniNetflix.Core.Application.Interfaces.UnitOfWork;
 using MiniNetflix.Infrastructure.Persistence.Context;
 using MiniNetflix.Infrastructure.Persistence.Repositories;
 
@@ -26,6 +27,8 @@ namespace MiniNetflix.Infrastructure.Persistence
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<IProducerRepository, ProducerRepository>();
             services.AddScoped<IMovieGenreRepository, MovieGenreRepository>();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>(); 
 
         }
 

@@ -1,23 +1,24 @@
-﻿
-
-using MediatR;
+﻿using MediatR;
 using MiniNetflix.Core.Application.Common;
 using MiniNetflix.Core.Application.Interfaces.Repositories;
+using MiniNetflix.Core.Application.Interfaces.UnitOfWork;
 using MiniNetflix.Core.Domain.Entities;
 
 namespace MiniNetflix.Core.Application.Features.Genres.Command.Create
 {
-    public class CreateGenreCommandHandler(IGenreRepository genreRepository) : IRequestHandler<CreateGenreCommand, Result<Unit>>
+    public class CreateGenreCommandHandler(IGenreRepository genreRepository, IUnitOfWork unitOfWork) : IRequestHandler<CreateGenreCommand, Result<Unit>>
     {
-        public Task<Result<Unit>> Handle(CreateGenreCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Unit>> Handle(CreateGenreCommand request, CancellationToken cancellationToken)
         {
-            var mapGenre = new Genre();
-
-            mapGenre.GenreName = request.createGenreDTO.GenreName;
-                      
+            var mapGenre = new Genre
+            {
+                GenreName = request.createGenreDTO.GenreName
+            };
+                     
             genreRepository.Add(mapGenre);
+            await unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return Task.FromResult(Result<Unit>.Success(Unit.Value));
+            return Result<Unit>.Success(Unit.Value);
 
         }
     }
