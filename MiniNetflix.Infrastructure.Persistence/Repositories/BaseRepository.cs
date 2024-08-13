@@ -14,14 +14,23 @@ namespace MiniNetflix.Infrastructure.Persistence.Repositories
        
         public async Task<T> GetByIdAsync(int id) => await context.Set<T>().FindAsync(id);
 
-        public void Add(T entity) =>  context.Set<T>().AddAsync(entity);
+        public void Add(T entity) => context.Set<T>().Add(entity);
         
-        public void Update(T entity) =>  context.Set<T>().Update(entity);
+        public void Update(T entity, int id)
+        {
+            var getEntityById =  context.Set<T>().Find(id);
+           
+            if (getEntityById != null)
+            {
+                context.Set<T>().Entry(getEntityById).CurrentValues.SetValues(entity);
+            }
+            
+        }  
 
         public void Delete(T entity) 
         {
             entity.IsDeleted = true;
-            Update(entity);
+            context.Set<T>().Update(entity);
         } 
         
     }

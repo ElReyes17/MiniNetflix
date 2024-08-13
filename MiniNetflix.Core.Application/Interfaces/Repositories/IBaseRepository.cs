@@ -4,10 +4,9 @@ namespace MiniNetflix.Core.Application.Interfaces.Repositories
     public interface IBaseRepository<T> where T : class
     {
         Task<List<T>> GetAllAsync();
-
         Task<T> GetByIdAsync(int id);
-        Task AddAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
+        void Add(T entity);
+        void Update(T entity, int id);
+        void Delete(T entity);
     }
 }
