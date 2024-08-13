@@ -19,7 +19,7 @@ namespace MiniNetflix.Core.Application.Common
 
         public string? ErrorMessage { get; }
 
-        public static Result<T> Success(T value) => new(value, true, "");
+        public static Result<T> Success(T value) =>  new (value, true, "");
 
         public static Result<T> Failure(string errorMessage) => new(default!, false, errorMessage);
     }

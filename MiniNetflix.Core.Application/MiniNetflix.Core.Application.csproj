@@ -11,12 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\Genres\" />
-    <Folder Include="Dtos\Movies\" />
-    <Folder Include="Dtos\MovieGenres\" />
     <Folder Include="Dtos\Accounts\" />
-    <Folder Include="Dtos\Producers\" />
-    <Folder Include="Features\Genres\Command\Create\" />
     <Folder Include="Features\Genres\Command\Delete\" />
     <Folder Include="Features\Genres\Command\Update\" />
     <Folder Include="Features\Genres\Query\GetAll\" />
