@@ -1,7 +1,9 @@
 ﻿using MediatR;
 using MiniNetflix.Core.Application.Common;
 using MiniNetflix.Core.Application.Dtos.Genres;
+using MiniNetflix.Core.Application.Exceptions;
 using MiniNetflix.Core.Application.Interfaces.Repositories;
+using System.Net;
 
 
 namespace MiniNetflix.Core.Application.Features.Genres.Query.GetAll
@@ -14,7 +16,7 @@ namespace MiniNetflix.Core.Application.Features.Genres.Query.GetAll
 
             if (genreList.Count == 0)
             {
-                return Result<List<GenreDTO>>.Failure("No hay generos creados");
+                throw new ApiException("No hay genero creados", (int)HttpStatusCode.NotFound);              
             }
 
             var response = genreList.Select(dto => new GenreDTO
