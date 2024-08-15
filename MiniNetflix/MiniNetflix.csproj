@@ -27,8 +27,4 @@
     <ProjectReference Include="..\MiniNetflix.Infrastructure.Persistence\MiniNetflix.Infrastructure.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Endpoints\" />
-  </ItemGroup>
-
 </Project>

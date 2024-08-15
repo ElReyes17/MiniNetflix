@@ -12,6 +12,8 @@ namespace MiniNetflix.Infrastructure.Persistence.Configurations
         {
             builder.ToTable("MovieGenre");
 
+            builder.HasKey(mg => new {mg.MovieId, mg.GenreId});
+
             builder.HasOne(mg => mg.Movie)
                    .WithMany(mg => mg.MovieGenres)
                    .HasForeignKey(mg => mg.MovieId);

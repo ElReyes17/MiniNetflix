@@ -1,6 +1,7 @@
 using MiniNetflix.Infrastructure.Persistence;
 using MiniNetflix.Core.Application;
 using MiniNetflix.Extensions;
+using MiniNetflix.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,7 +41,7 @@ app.UseSession();
 //{
 //    endpoints.MapControllers();
 //});
-
+app.MapGroup("/genres").MapGenre().WithTags("Genres endpoint");
 app.Run();
 
 

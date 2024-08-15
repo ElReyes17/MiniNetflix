@@ -15,6 +15,14 @@ namespace MiniNetflix.Core.Application.Features.Genres.Command.Delete
             {
                 return Result<Unit>.Failure("El id ingresado no existe");
             }
+
+            var genre = await genreRepository.GetByIdAsync(request.Id);
+
+            genreRepository.Delete(genre);
+
+            await unitOfWork.SaveChangesAsync(cancellationToken);
+
+            return Result<Unit>.Success(Unit.Value);
         }
     }
 }
