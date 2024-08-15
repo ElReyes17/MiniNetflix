@@ -42,6 +42,8 @@ app.UseSession();
 //    endpoints.MapControllers();
 //});
 app.MapGroup("/genres").MapGenre().WithTags("Genres endpoint");
+
+
 app.Run();
 
 

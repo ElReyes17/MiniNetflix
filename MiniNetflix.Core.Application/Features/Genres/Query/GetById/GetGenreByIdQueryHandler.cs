@@ -2,6 +2,7 @@
 using MediatR;
 using MiniNetflix.Core.Application.Common;
 using MiniNetflix.Core.Application.Dtos.Genres;
+using MiniNetflix.Core.Application.Exceptions;
 using MiniNetflix.Core.Application.Interfaces.Repositories;
 
 namespace MiniNetflix.Core.Application.Features.Genres.Query.GetById
@@ -12,7 +13,7 @@ namespace MiniNetflix.Core.Application.Features.Genres.Query.GetById
         {
             if (!await genreRepository.isExist(request.id))
             {
-                return Result<GenreDTO>.Failure("El id no existe");
+                throw new ApiException("El id no existe", 404);
             }
 
             var getGenre = await genreRepository.GetByIdAsync(request.id);
