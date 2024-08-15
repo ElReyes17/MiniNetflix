@@ -15,7 +15,7 @@ namespace MiniNetflix.Infrastructure.Persistence
         public static void AddPersistenceLayer(this IServiceCollection services, IConfiguration configuration)
         {
             //Configuracion del Contexto y Conexión a Base de Datos
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(configuration.GetConnectionString(""),
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                                                         m => m.MigrationsAssembly(typeof(ApplicationContext).Assembly.FullName)));
 
 
