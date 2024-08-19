@@ -62,17 +62,17 @@ namespace MiniNetflix.Endpoints
 
         static async Task<Ok<List<ProducerDTO>>> Get(ISender mediator)
         {
-            var genre = await mediator.Send(new GetAllProducerQuery());
+            var producer = await mediator.Send(new GetAllProducerQuery());
 
-            return TypedResults.Ok(genre.Value);
+            return TypedResults.Ok(producer.Value);
 
         }
 
         static async Task<Ok<ProducerDTO>> GetById(ISender mediator, int id)
         {
-            var genre = await mediator.Send(new GetProducerByIdQuery(id));
+            var producer = await mediator.Send(new GetProducerByIdQuery(id));
 
-            return TypedResults.Ok(genre.Value);
+            return TypedResults.Ok(producer.Value);
         }
 
         static async Task<Results<Created, NotFound>> Create(ISender mediator, CreateProducerCommand command)
