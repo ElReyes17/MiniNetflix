@@ -22,8 +22,6 @@
     <Folder Include="Features\Movies\Command\Update\" />
     <Folder Include="Features\Movies\Query\GetAll\" />
     <Folder Include="Features\Movies\Query\GetById\" />
-    <Folder Include="Features\Producers\Command\Delete\" />
-    <Folder Include="Features\Producers\Command\Update\" />
     <Folder Include="Features\Producers\Query\GetAll\" />
     <Folder Include="Features\Producers\Query\GetById\" />
   </ItemGroup>
