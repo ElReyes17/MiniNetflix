@@ -1,7 +1,6 @@
-﻿
-
-using MediatR;
+﻿using MediatR;
 using MiniNetflix.Core.Application.Common;
+using MiniNetflix.Core.Application.Exceptions;
 using MiniNetflix.Core.Application.Interfaces.Repositories;
 using MiniNetflix.Core.Application.Interfaces.UnitOfWork;
 
@@ -13,7 +12,7 @@ namespace MiniNetflix.Core.Application.Features.Genres.Command.Delete
         {
             if(!await genreRepository.isExist(request.Id))
             {
-                return Result<Unit>.Failure("El id ingresado no existe");
+                throw new ApiException("El id no existe", 404);
             }
 
             var genre = await genreRepository.GetByIdAsync(request.Id);

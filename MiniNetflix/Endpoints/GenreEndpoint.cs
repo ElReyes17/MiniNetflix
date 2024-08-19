@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using MiniNetflix.Core.Application.Dtos.Genres;
 using MiniNetflix.Core.Application.Features.Genres.Command.Create;
+using MiniNetflix.Core.Application.Features.Genres.Command.Delete;
 using MiniNetflix.Core.Application.Features.Genres.Command.Update;
 using MiniNetflix.Core.Application.Features.Genres.Query.GetAll;
 using MiniNetflix.Core.Application.Features.Genres.Query.GetById;
@@ -46,6 +47,15 @@ namespace MiniNetflix.Endpoints
                     return opt;
                 });
 
+            group.MapDelete("/", Delete)
+                .WithOpenApi(opt =>
+                {
+                    opt.Summary = "Eliminar Géneros";
+                    opt.Description = "Con este endpoint podemos eliminar un género";
+                    return opt;
+
+                });
+
             return group;
 
         }
@@ -72,11 +82,18 @@ namespace MiniNetflix.Endpoints
             return TypedResults.Created();
         }
 
-        static async Task<Results<Created, NotFound>> Update(ISender mediator, UpdateGenreCommand command)
+        static async Task<Results<NoContent, NotFound>> Update(ISender mediator, UpdateGenreCommand command)
         {
             await mediator.Send(command);
 
-            return TypedResults.Created();
+            return TypedResults.NoContent();
+        }
+
+        static async Task<Results<NoContent, NotFound>> Delete(ISender mediator, int id)
+        {
+            await mediator.Send(new DeleteGenreCommand(id));
+
+            return TypedResults.NoContent();
         }
 
 
