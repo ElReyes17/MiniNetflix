@@ -1,6 +1,4 @@
-﻿
-
-using MediatR;
+﻿using MediatR;
 using MiniNetflix.Core.Application.Common;
 using MiniNetflix.Core.Application.Exceptions;
 using MiniNetflix.Core.Application.Interfaces.Repositories;
@@ -17,8 +15,6 @@ namespace MiniNetflix.Core.Application.Features.Genres.Command.Update
             {
                 throw new ApiException("El id no existe", 404);
             }
-
-            var getGenre = await genreRepository.GetByIdAsync(request.updateGenreDTO.GenreId);
 
             Genre genre = new Genre
             {

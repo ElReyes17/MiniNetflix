@@ -17,8 +17,6 @@ namespace MiniNetflix.Core.Application.Features.Producers.Command.Update
                 throw new ApiException("El id no existe", 404);
             }
 
-            var getProducer = await producerRepository.GetByIdAsync(request.UpdateProducerDTO.ProducerId);
-
             Producer producer = new Producer
             {
                 ProducerId = request.UpdateProducerDTO.ProducerId,

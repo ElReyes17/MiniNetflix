@@ -42,7 +42,7 @@ app.UseSession();
 //    endpoints.MapControllers();
 //});
 app.MapGroup("/genres").MapGenre().WithTags("Genres endpoint");
-
+app.MapGroup("/producers").MapProducer().WithTags("Producers endpoint");
 
 app.Run();
 
