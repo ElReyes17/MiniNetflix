@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using MiniNetflix.Core.Application.Dtos.Genres;
 using MiniNetflix.Core.Application.Features.Genres.Command.Create;
+using MiniNetflix.Core.Application.Features.Genres.Command.Update;
 using MiniNetflix.Core.Application.Features.Genres.Query.GetAll;
 using MiniNetflix.Core.Application.Features.Genres.Query.GetById;
 
@@ -37,6 +38,14 @@ namespace MiniNetflix.Endpoints
                      return opt;
                  });
 
+            group.MapPut("/", Update)
+                .WithOpenApi(opt =>
+                {
+                    opt.Summary = "Actualizar Géneros";
+                    opt.Description = "Con este endpoint podemos actualizar los géneros";
+                    return opt;
+                });
+
             return group;
 
         }
@@ -57,6 +66,13 @@ namespace MiniNetflix.Endpoints
         }
 
         static async Task<Results<Created, NotFound>> Create(ISender mediator, CreateGenreCommand command)
+        {
+            await mediator.Send(command);
+
+            return TypedResults.Created();
+        }
+
+        static async Task<Results<Created, NotFound>> Update(ISender mediator, UpdateGenreCommand command)
         {
             await mediator.Send(command);
 
