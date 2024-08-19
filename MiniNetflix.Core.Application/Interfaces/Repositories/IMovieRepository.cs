@@ -3,6 +3,9 @@
 
 namespace MiniNetflix.Core.Application.Interfaces.Repositories
 {
-    public interface IMovieRepository : IBaseRepository<Movie> { }
+    public interface IMovieRepository : IBaseRepository<Movie> 
+    {
+        Task<bool> isExist(int id);
+    }
     
 }
