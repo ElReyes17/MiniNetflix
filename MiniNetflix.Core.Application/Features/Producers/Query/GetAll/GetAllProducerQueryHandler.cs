@@ -15,7 +15,7 @@ namespace MiniNetflix.Core.Application.Features.Producers.Query.GetAll
 
             if (producerList.Count == 0)
             {
-                throw new ApiException("No hay prodcutoras creadas", (int)HttpStatusCode.NotFound);
+                throw new ApiException("No hay productoras creadas", (int)HttpStatusCode.NotFound);
             }
 
             var response = producerList.Select(dto => new ProducerDTO

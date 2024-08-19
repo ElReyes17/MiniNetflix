@@ -20,12 +20,18 @@ namespace MiniNetflix.Core.Application.Features.Movies.Command.Update
 
             Movie movie = new Movie
             {
-                MovieId = request.UpdateMovieDTO.MovieId
-                GenreId = request.updateGenreDTO.GenreId,
-                GenreName = request.updateGenreDTO.GenreName
+                MovieId = request.UpdateMovieDTO.MovieId,
+                MovieName = request.UpdateMovieDTO.MovieName,
+                CoverImage = request.UpdateMovieDTO.CoverImage,
+                ProducerId = request.UpdateMovieDTO.ProducerId,
+                MovieGenres = request.UpdateMovieDTO.MovieGenres.Select(ids => new MovieGenre
+                {
+                    GenreId = ids,
+
+                }).ToList()
             };
 
-            movieRepository.Update(genre, genre.GenreId);
+            movieRepository.Update(movie, movie.MovieId);
             await unitOfWork.SaveChangesAsync(cancellationToken);
 
             return Result<Unit>.Success(Unit.Value);
