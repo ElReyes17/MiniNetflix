@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
+using MiniNetflix.Core.Application.Common;
 using MiniNetflix.Core.Application.Dtos.Genres;
 using MiniNetflix.Core.Application.Features.Genres.Command.Create;
 using MiniNetflix.Core.Application.Features.Genres.Command.Delete;
@@ -60,19 +61,19 @@ namespace MiniNetflix.Endpoints
 
         }
 
-        static async Task<Ok<List<GenreDTO>>> Get(ISender mediator)
+        static async Task<Ok<Result<List<GenreDTO>>>> Get(ISender mediator)
         {
             var genre =  await mediator.Send(new GetAllGenreQuery());
 
-            return TypedResults.Ok(genre.Value);
+            return TypedResults.Ok(genre);
 
         }
 
-        static async Task<Ok<GenreDTO>> GetById(ISender mediator, int id)
+        static async Task<Ok<Result<GenreDTO>>> GetById(ISender mediator, int id)
         {
             var genre = await mediator.Send(new GetGenreByIdQuery(id));
 
-            return TypedResults.Ok(genre.Value);
+            return TypedResults.Ok(genre);
         }
 
         static async Task<Results<Created, NotFound>> Create(ISender mediator, CreateGenreCommand command)

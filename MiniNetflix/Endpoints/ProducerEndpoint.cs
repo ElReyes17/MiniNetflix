@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
+using MiniNetflix.Core.Application.Common;
 using MiniNetflix.Core.Application.Dtos.Producers;
 using MiniNetflix.Core.Application.Features.Producers.Command.Create;
 using MiniNetflix.Core.Application.Features.Producers.Command.Delete;
@@ -60,19 +61,19 @@ namespace MiniNetflix.Endpoints
 
         }
 
-        static async Task<Ok<List<ProducerDTO>>> Get(ISender mediator)
+        static async Task<Ok<Result<List<ProducerDTO>>>> Get(ISender mediator)
         {
             var producer = await mediator.Send(new GetAllProducerQuery());
 
-            return TypedResults.Ok(producer.Value);
+            return TypedResults.Ok(producer);
 
         }
 
-        static async Task<Ok<ProducerDTO>> GetById(ISender mediator, int id)
+        static async Task<Ok<Result<ProducerDTO>>> GetById(ISender mediator, int id)
         {
             var producer = await mediator.Send(new GetProducerByIdQuery(id));
 
-            return TypedResults.Ok(producer.Value);
+            return TypedResults.Ok(producer);
         }
 
         static async Task<Results<Created, NotFound>> Create(ISender mediator, CreateProducerCommand command)
