@@ -68,7 +68,7 @@ namespace MiniNetflix.Endpoints
             return TypedResults.Ok(producer);
 
         }
-
+         
         static async Task<Ok<Result<ProducerDTO>>> GetById(ISender mediator, int id)
         {
             var producer = await mediator.Send(new GetProducerByIdQuery(id));
