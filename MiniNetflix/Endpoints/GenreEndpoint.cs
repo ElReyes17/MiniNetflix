@@ -77,8 +77,8 @@ namespace MiniNetflix.Endpoints
 
         static async Task<Results<Created, NotFound>> Create(ISender mediator, CreateGenreCommand command)
         {
-            await mediator.Send(command);
-
+          var response =  await mediator.Send(command);
+            
             return TypedResults.Created();
         }
 

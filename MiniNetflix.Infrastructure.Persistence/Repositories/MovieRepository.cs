@@ -20,6 +20,18 @@ namespace MiniNetflix.Infrastructure.Persistence.Repositories
                                        .Include(m => m.Producer)
                                        .ToListAsync();
         }
+
+        public async Task<Movie> FindByIdIncludeAsync(int id) 
+        {
+          
+             var movie = await dbContext.Movie.Include(m => m.MovieGenres)
+                                        .ThenInclude(mv => mv.Genre)
+                                        .Include(m => m.Producer)
+                                        .FirstOrDefaultAsync(m => m.MovieId == id);
+
+
+            return movie;
+        }
     }
     
 }

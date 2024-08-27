@@ -1,4 +1,4 @@
-﻿using Azure;
+﻿
 using MiniNetflix.Core.Application.Common;
 using MiniNetflix.Core.Application.Exceptions;
 using System.Net;
