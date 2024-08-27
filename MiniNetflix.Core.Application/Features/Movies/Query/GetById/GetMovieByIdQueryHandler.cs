@@ -13,7 +13,7 @@ namespace MiniNetflix.Core.Application.Features.Movies.Query.GetById
 
             var movie = await movieRepository.FindByIdIncludeAsync(request.Id);
 
-            if(await movieRepository.isExist(request.Id))
+            if(!await movieRepository.isExist(request.Id))
             {
                 throw new ApiException("El Id ingresado no existe", 400);
             }

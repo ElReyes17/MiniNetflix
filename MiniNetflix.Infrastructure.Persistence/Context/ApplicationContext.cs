@@ -8,7 +8,6 @@ namespace MiniNetflix.Infrastructure.Persistence.Context
         public DbSet<Movie> Movie { get; set; }
         public DbSet<Genre> Genre { get; set; }
         public DbSet<Producer> Producer { get; set; }
-        public DbSet<MovieGenre> MovieGenre { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

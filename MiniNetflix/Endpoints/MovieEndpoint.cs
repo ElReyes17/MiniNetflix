@@ -1,15 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
-using MiniNetflix.Core.Application.Dtos.Genres;
 using MiniNetflix.Core.Application.Dtos.Movies;
-using MiniNetflix.Core.Application.Features.Genres.Command.Create;
-using MiniNetflix.Core.Application.Features.Genres.Command.Delete;
-using MiniNetflix.Core.Application.Features.Genres.Command.Update;
-using MiniNetflix.Core.Application.Features.Genres.Query.GetById;
 using MiniNetflix.Core.Application.Features.Movies.Command.Create;
 using MiniNetflix.Core.Application.Features.Movies.Command.Delete;
 using MiniNetflix.Core.Application.Features.Movies.Command.Update;
 using MiniNetflix.Core.Application.Features.Movies.Query.GetAll;
+using MiniNetflix.Core.Application.Features.Movies.Query.GetById;
 
 namespace MiniNetflix.Endpoints
 {
@@ -26,14 +22,14 @@ namespace MiniNetflix.Endpoints
 
                  });
 
-            //group.MapGet("/{id:int}", GetById)
-            //     .WithOpenApi(opt =>
-            //     {
-            //         opt.Summary = "Obtener una Película por Id";
-            //         opt.Description = "Con este endpoint podemos obtener una Película por su Id";
-            //         return opt;
+            group.MapGet("/{id:int}", GetById)
+                 .WithOpenApi(opt =>
+                 {
+                     opt.Summary = "Obtener una Película por Id";
+                     opt.Description = "Con este endpoint podemos obtener una Película por su Id";
+                     return opt;
 
-            //     });
+                 });
 
             group.MapPost("/", Create)
                  .WithOpenApi(opt =>
@@ -72,12 +68,12 @@ namespace MiniNetflix.Endpoints
 
         }
 
-        //static async Task<Ok<GenreDTO>> GetById(ISender mediator, int id)
-        //{
-        //    var genre = await mediator.Send(new GetMovieByIdQuery(id));
+        static async Task<Ok<MovieDTO>> GetById(ISender mediator, int id)
+        {
+            var movie = await mediator.Send(new GetMovieByIdQuery(id));
 
-        //    return TypedResults.Ok(genre.Value);
-        //}
+            return TypedResults.Ok(movie.Value);
+        }
 
         static async Task<Results<Created, NotFound>> Create(ISender mediator, CreateMovieCommand command)
         {
