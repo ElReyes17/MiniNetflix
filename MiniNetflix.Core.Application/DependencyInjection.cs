@@ -12,7 +12,8 @@ namespace MiniNetflix.Core.Application
         {
             services.AddMediatR(config => config.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
             services.AddScoped(typeof(IPipelineBehavior<,>),typeof(ValidationBehavior<,>));
-           // services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());        
+            
         }
     }
 }
