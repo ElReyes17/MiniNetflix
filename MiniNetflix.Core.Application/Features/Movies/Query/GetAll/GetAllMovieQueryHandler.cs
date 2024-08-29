@@ -23,6 +23,7 @@ namespace MiniNetflix.Core.Application.Features.Movies.Query.GetAll
                 MovieId = dto.MovieId,
                 MovieName = dto.MovieName,
                 CoverImage = dto.CoverImage,
+                MovieLink = dto.MovieLink,
                 ProducerId = dto.ProducerId,               
                 ProducerName = dto.Producer.ProducerName,
                 MovieGenres = dto.MovieGenres.Select(a => a.Genre.GenreName).ToList(),

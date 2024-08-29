@@ -19,6 +19,7 @@ namespace MiniNetflix.Core.Application.Features.Movies.Command.Create
             {
                 MovieName = request.createMovieDTO.MovieName,
                 CoverImage = request.createMovieDTO.CoverImage,
+                MovieLink = request.createMovieDTO.MovieLink,
                 ProducerId = request.createMovieDTO.ProducerId,
                 MovieGenres = request.createMovieDTO.MovieGenres.Select(ids => new MovieGenre
                 {

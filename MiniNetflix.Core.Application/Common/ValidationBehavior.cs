@@ -17,21 +17,21 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
     {
         if (_validator is null)
         {
-            await next();
+            return await next();
         }
 
-        var validatorResult = await _validator.ValidateAsync(request, cancellationToken);
+        var validationResult = await _validator.ValidateAsync(request, cancellationToken);
 
-        if (validatorResult.IsValid)
+        if (validationResult.IsValid)
         {
             return await next();
         }
 
-       
-        var errors = validatorResult.Errors
-                .ConvertAll(validationFailure => Result<TResponse>
-                .Failure(validationFailure.ErrorMessage));
+        var errorMessages = string.Join(Environment.NewLine, validationResult.Errors.Select(e => e.ErrorMessage));
 
-        return (TResponse)(dynamic)errors;
+        
+        return (TResponse)(object)Result<Unit>.Failure(errorMessages);
     }
 }
+
+

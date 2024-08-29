@@ -12,13 +12,15 @@ namespace MiniNetflix.Core.Domain.Entities
 
         public string CoverImage { get; set; } = string.Empty;
 
+        public string MovieLink {get; set; } = string.Empty;
+
         public int ProducerId { get; set; }
 
 
 
         //Navigation Properties
 
-        public Producer Producer { get; set; } 
+        public Producer Producer { get; set; }  
 
         public ICollection<MovieGenre> MovieGenres { get; set; }
     }
