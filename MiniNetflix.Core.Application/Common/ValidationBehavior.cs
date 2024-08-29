@@ -4,7 +4,7 @@ using MiniNetflix.Core.Application.Common;
 
 public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
-    where TResponse : Result<TResponse>
+    
 {
     private readonly IValidator<TRequest>? _validator;
 
