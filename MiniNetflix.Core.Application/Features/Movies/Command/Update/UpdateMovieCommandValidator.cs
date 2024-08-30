@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
+using FluentValidation;
 
 namespace MiniNetflix.Core.Application.Features.Movies.Command.Update
 {
-    internal class UpdateMovieCommandValidator
+    public class UpdateMovieCommandValidator : AbstractValidator<UpdateMovieCommand>
     {
+        public UpdateMovieCommandValidator()
+        {
+            
+        }
     }
 }
