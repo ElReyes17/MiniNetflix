@@ -88,16 +88,26 @@ namespace MiniNetflix.Endpoints
             return TypedResults.Created();
         }
 
-        static async Task<Results<NoContent, NotFound>> Update(ISender mediator, UpdateMovieCommand command)
+        static async Task<Results<NoContent, BadRequest<string>>> Update(ISender mediator, UpdateMovieCommand command)
         {
-            await mediator.Send(command);
+            var request = await mediator.Send(command);
+
+            if (!request.IsSuccess)
+            {
+                return TypedResults.BadRequest(request.ErrorMessage);
+            }
 
             return TypedResults.NoContent();
         }
 
-        static async Task<Results<NoContent, NotFound>> Delete(ISender mediator, int id)
+        static async Task<Results<NoContent, BadRequest<string>>> Delete(ISender mediator, int id)
         {
-            await mediator.Send(new DeleteMovieCommand(id));
+            var request = await mediator.Send(new DeleteMovieCommand(id));
+
+            if (!request.IsSuccess)
+            {
+                return TypedResults.BadRequest(request.ErrorMessage);
+            }
 
             return TypedResults.NoContent();
         }
