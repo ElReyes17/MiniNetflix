@@ -11,12 +11,7 @@ namespace MiniNetflix.Core.Application.Features.Movies.Query.GetById
         public async Task<Result<MovieDTO>> Handle(GetMovieByIdQuery request, CancellationToken cancellationToken)
         {
 
-            var movie = await movieRepository.FindByIdIncludeAsync(request.Id);
-
-            if(!await movieRepository.isExist(request.Id))
-            {
-                throw new ApiException("El Id ingresado no existe", 400);
-            }
+            var movie = await movieRepository.FindByIdIncludeAsync(request.Id);           
 
             if(movie == null)
             {
