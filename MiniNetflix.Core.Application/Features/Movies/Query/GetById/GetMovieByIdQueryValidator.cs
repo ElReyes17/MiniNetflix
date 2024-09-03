@@ -10,10 +10,10 @@ namespace MiniNetflix.Core.Application.Features.Movies.Query.GetById
         public GetMovieByIdQueryValidator(IMovieRepository movieRepository)
         {
             RuleFor(m => m.Id)
-                .NotEmpty().WithMessage("")
-                .NotNull().WithMessage("")
+                .NotEmpty().WithMessage("el Id no puede estar Vacío")
+                .NotNull().WithMessage("El Id no puede ser Nulo")
                 .MustAsync(async (id, cancellationToken) =>
-                !await movieRepository.isExist(id)).WithMessage("");
+                !await movieRepository.isExist(id)).WithMessage("No existe una pelicula con ese Id");
             
         }
     }

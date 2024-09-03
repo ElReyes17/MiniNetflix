@@ -61,19 +61,29 @@ namespace MiniNetflix.Endpoints
 
         }
 
-        static async Task<Ok<Result<List<MovieDTO>>>> Get(ISender mediator)
+        static async Task<Results<Ok<Result<List<MovieDTO>>>, BadRequest<string>>> Get(ISender mediator)
         {
-            var movie = await mediator.Send(new GetAllMovieQuery());
+            var response = await mediator.Send(new GetAllMovieQuery());
 
-            return TypedResults.Ok(movie);
+            if (!response.IsSuccess)
+            {
+                return TypedResults.BadRequest(response.ErrorMessage);
+            }
+
+            return TypedResults.Ok(response);
 
         }
 
-        static async Task<Ok<Result<MovieDTO>>> GetById(ISender mediator, int id)
-        {
-            var movie = await mediator.Send(new GetMovieByIdQuery(id));
+        static async Task<Results<Ok<Result<MovieDTO>>, BadRequest<string>>> GetById(ISender mediator, int id)
+        {            
+            var response = await mediator.Send(new GetMovieByIdQuery(id));
 
-            return TypedResults.Ok(movie);
+            if(!response.IsSuccess)
+            {
+                return TypedResults.BadRequest(response.ErrorMessage);
+            }
+
+            return TypedResults.Ok(response);
         }
 
         static async Task<Results<Created, BadRequest<string>>> Create(ISender mediator, CreateMovieCommand command)
