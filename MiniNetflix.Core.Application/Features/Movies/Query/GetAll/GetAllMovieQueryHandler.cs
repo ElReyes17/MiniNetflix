@@ -13,11 +13,6 @@ namespace MiniNetflix.Core.Application.Features.Movies.Query.GetAll
         {
             var movieList = await movieRepository.GetAllWithIncludeAsync();
 
-            if (movieList.Count == 0)
-            {
-                throw new ApiException("No hay películas creadas", (int)HttpStatusCode.NotFound);
-            }
-
             var response = movieList.Select(dto => new MovieDTO
             {
                 MovieId = dto.MovieId,
