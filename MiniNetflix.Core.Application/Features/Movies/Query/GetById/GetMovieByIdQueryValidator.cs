@@ -17,7 +17,7 @@ namespace MiniNetflix.Core.Application.Features.Movies.Query.GetById
                     await movieRepository.isExist(id))
                    .WithMessage("No existe una película con ese Id.")
                    .MustAsync(async (id, cancellationToken) =>
-                  {
+                   {
                         var movie = await movieRepository.FindByIdIncludeAsync(id);
                         if (movie == null)
                         {
