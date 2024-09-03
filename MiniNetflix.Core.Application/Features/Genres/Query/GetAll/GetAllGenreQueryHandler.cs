@@ -14,11 +14,6 @@ namespace MiniNetflix.Core.Application.Features.Genres.Query.GetAll
         {
             var genreList = await genreRepository.GetAllAsync();
 
-            if (genreList.Count == 0)
-            {
-                throw new ApiException("No hay géneros creados", (int)HttpStatusCode.NotFound);              
-            }
-
             var response = genreList.Select(dto => new GenreDTO
             {
                 GenreId = dto.GenreId,
