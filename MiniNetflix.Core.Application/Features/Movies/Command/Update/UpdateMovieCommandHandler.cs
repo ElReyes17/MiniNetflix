@@ -13,11 +13,7 @@ namespace MiniNetflix.Core.Application.Features.Movies.Command.Update
     {
         public async Task<Result<Unit>> Handle(UpdateMovieCommand request, CancellationToken cancellationToken)
         {
-            if (!await movieRepository.isExist(request.UpdateMovieDTO.MovieId))
-            {
-                throw new ApiException("El id no existe", 404);
-            }
-
+         
             Movie movie = new Movie
             {
                 MovieId = request.UpdateMovieDTO.MovieId,
