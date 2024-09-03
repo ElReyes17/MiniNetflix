@@ -1,9 +1,7 @@
 ﻿using MediatR;
 using MiniNetflix.Core.Application.Common;
 using MiniNetflix.Core.Application.Dtos.Movies;
-using MiniNetflix.Core.Application.Exceptions;
 using MiniNetflix.Core.Application.Interfaces.Repositories;
-using System.Net;
 
 namespace MiniNetflix.Core.Application.Features.Movies.Query.GetAll
 {
