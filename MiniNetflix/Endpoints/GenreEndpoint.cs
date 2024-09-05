@@ -14,7 +14,7 @@ namespace MiniNetflix.Endpoints
     {
         public static RouteGroupBuilder MapGenre(this RouteGroupBuilder group)
         {
-            group.MapGet("/get-all-genres", Get)
+            group.MapGet("/", Get)
                  .WithOpenApi(opt =>
                  {
                      opt.Summary = "Obtener Géneros";
@@ -23,7 +23,7 @@ namespace MiniNetflix.Endpoints
 
                  });
 
-            group.MapGet("/get-genre-by-id/{id:int}", GetById)
+            group.MapGet("/{id:int}", GetById)
                  .WithOpenApi(opt =>
                  {
                      opt.Summary = "Obtener un Género por Id";
@@ -32,7 +32,7 @@ namespace MiniNetflix.Endpoints
 
                  });
 
-            group.MapPost("/create-genre", Create)
+            group.MapPost("/", Create)
                  .WithOpenApi(opt =>
                  {
                      opt.Summary = "Crear Géneros";
@@ -40,7 +40,7 @@ namespace MiniNetflix.Endpoints
                      return opt;
                  });
 
-            group.MapPut("/update-genre", Update)
+            group.MapPut("/", Update)
                 .WithOpenApi(opt =>
                 {
                     opt.Summary = "Actualizar Géneros";
@@ -48,7 +48,7 @@ namespace MiniNetflix.Endpoints
                     return opt;
                 });
 
-            group.MapDelete("/delete-genre", Delete)
+            group.MapDelete("/", Delete)
                 .WithOpenApi(opt =>
                 {
                     opt.Summary = "Eliminar Géneros";
