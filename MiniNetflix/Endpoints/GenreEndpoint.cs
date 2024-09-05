@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using MiniNetflix.Core.Application.Common;
 using MiniNetflix.Core.Application.Dtos.Genres;
@@ -15,7 +14,7 @@ namespace MiniNetflix.Endpoints
     {
         public static RouteGroupBuilder MapGenre(this RouteGroupBuilder group)
         {
-            group.MapGet("/", Get)
+            group.MapGet("/get-all-genres", Get)
                  .WithOpenApi(opt =>
                  {
                      opt.Summary = "Obtener Géneros";
@@ -24,7 +23,7 @@ namespace MiniNetflix.Endpoints
 
                  });
 
-            group.MapGet("/{id:int}", GetById)
+            group.MapGet("/get-genre-by-id/{id:int}", GetById)
                  .WithOpenApi(opt =>
                  {
                      opt.Summary = "Obtener un Género por Id";
@@ -33,7 +32,7 @@ namespace MiniNetflix.Endpoints
 
                  });
 
-            group.MapPost("/", Create)
+            group.MapPost("/create-genre", Create)
                  .WithOpenApi(opt =>
                  {
                      opt.Summary = "Crear Géneros";
@@ -41,7 +40,7 @@ namespace MiniNetflix.Endpoints
                      return opt;
                  });
 
-            group.MapPut("/", Update)
+            group.MapPut("/update-genre", Update)
                 .WithOpenApi(opt =>
                 {
                     opt.Summary = "Actualizar Géneros";
@@ -49,7 +48,7 @@ namespace MiniNetflix.Endpoints
                     return opt;
                 });
 
-            group.MapDelete("/", Delete)
+            group.MapDelete("/delete-genre", Delete)
                 .WithOpenApi(opt =>
                 {
                     opt.Summary = "Eliminar Géneros";

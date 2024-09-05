@@ -1,6 +1,9 @@
-﻿using MediatR;
+﻿using Azure;
+using Azure.Core;
+using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using MiniNetflix.Core.Application.Common;
+using MiniNetflix.Core.Application.Dtos.Genres;
 using MiniNetflix.Core.Application.Dtos.Producers;
 using MiniNetflix.Core.Application.Features.Producers.Command.Create;
 using MiniNetflix.Core.Application.Features.Producers.Command.Delete;
@@ -61,19 +64,31 @@ namespace MiniNetflix.Endpoints
 
         }
 
-        static async Task<Ok<Result<List<ProducerDTO>>>> Get(ISender mediator)
+        static async Task<Results<Ok<Result<List<ProducerDTO>>>, BadRequest<string>>> Get(ISender mediator)
         {
-            var producer = await mediator.Send(new GetAllProducerQuery());
+            var response = await mediator.Send(new GetAllProducerQuery());
 
-            return TypedResults.Ok(producer);
+            if (!response.IsSuccess)
+            {
+                return TypedResults.BadRequest(response.ErrorMessage);
+            }
+
+            return TypedResults.Ok(response);
 
         }
          
-        static async Task<Ok<Result<ProducerDTO>>> GetById(ISender mediator, int id)
+        static async Task<Results<Ok<Result<ProducerDTO>>, BadRequest<string>>> GetById(ISender mediator, int id)
         {
-            var producer = await mediator.Send(new GetProducerByIdQuery(id));
+            var response = await mediator.Send(new GetProducerByIdQuery(id));
 
-            return TypedResults.Ok(producer);
+
+            if (!response.IsSuccess)
+            {
+                return TypedResults.BadRequest(response.ErrorMessage);
+            }
+
+
+            return TypedResults.Ok(response);
         }
 
         static async Task<Results<Created, BadRequest<string>>> Create(ISender mediator, CreateProducerCommand command)
