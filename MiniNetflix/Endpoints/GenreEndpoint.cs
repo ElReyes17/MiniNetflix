@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Azure.Core;
+using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using MiniNetflix.Core.Application.Common;
 using MiniNetflix.Core.Application.Dtos.Genres;
@@ -61,38 +62,63 @@ namespace MiniNetflix.Endpoints
 
         }
 
-        static async Task<Ok<Result<List<GenreDTO>>>> Get(ISender mediator)
+        static async Task<Results<Ok<Result<List<GenreDTO>>>, BadRequest<string>>> Get(ISender mediator)
         {
-            var genre =  await mediator.Send(new GetAllGenreQuery());
+            var response =  await mediator.Send(new GetAllGenreQuery());
 
-            return TypedResults.Ok(genre);
+            if (!response.IsSuccess)
+            {
+                return TypedResults.BadRequest(response.ErrorMessage);
+            }
+
+            return TypedResults.Ok(response);
 
         }
 
-        static async Task<Ok<Result<GenreDTO>>> GetById(ISender mediator, int id)
+        static async Task<Results<Ok<Result<GenreDTO>>, BadRequest<string>>> GetById(ISender mediator, int id)
         {
-            var genre = await mediator.Send(new GetGenreByIdQuery(id));
+            var response = await mediator.Send(new GetGenreByIdQuery(id));
 
-            return TypedResults.Ok(genre);
+            if (!response.IsSuccess)
+            {
+                return TypedResults.BadRequest(response.ErrorMessage);
+            }
+
+            return TypedResults.Ok(response);
         }
 
-        static async Task<Results<Created, NotFound>> Create(ISender mediator, CreateGenreCommand command)
+        static async Task<Results<Created, BadRequest<string>>> Create(ISender mediator, CreateGenreCommand command)
         {
-          var response =  await mediator.Send(command);
-            
+            var request = await mediator.Send(command);
+
+            if (!request.IsSuccess)
+            {
+                return TypedResults.BadRequest(request.ErrorMessage);
+            }
+
             return TypedResults.Created();
         }
 
-        static async Task<Results<NoContent, NotFound>> Update(ISender mediator, UpdateGenreCommand command)
+        static async Task<Results<NoContent, BadRequest<string>>> Update(ISender mediator, UpdateGenreCommand command)
         {
-            await mediator.Send(command);
+            var request = await mediator.Send(command);
+
+            if (!request.IsSuccess)
+            {
+                return TypedResults.BadRequest(request.ErrorMessage);
+            }
 
             return TypedResults.NoContent();
         }
 
-        static async Task<Results<NoContent, NotFound>> Delete(ISender mediator, int id)
+        static async Task<Results<NoContent, BadRequest<string>>> Delete(ISender mediator, int id)
         {
-            await mediator.Send(new DeleteGenreCommand(id));
+            var request = await mediator.Send(new DeleteGenreCommand(id));
+
+            if (!request.IsSuccess)
+            {
+                return TypedResults.BadRequest(request.ErrorMessage);
+            }
 
             return TypedResults.NoContent();
         }
