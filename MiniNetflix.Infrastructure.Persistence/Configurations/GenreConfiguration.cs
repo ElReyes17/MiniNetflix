@@ -15,6 +15,12 @@ namespace MiniNetflix.Infrastructure.Persistence.Configurations
             builder.HasKey(genre => genre.GenreId);
 
             builder.HasQueryFilter(x => !x.IsDeleted);
+
+            builder.Property(genre => genre.GenreName)
+           .IsRequired()
+           .HasMaxLength(100);
+
+
         }
     }
 }
