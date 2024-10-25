@@ -12,7 +12,7 @@ namespace MiniNetflix.Core.Application.Features.Genres.Command.Delete
                .NotEmpty().WithMessage("El Id no puede estar vacio")
                .NotNull().WithMessage("El Id no puede Ser nulo")
                .MustAsync(async (id, cancellationToken) =>
-               !await genreRepository.isExist(id)).WithMessage("El Id Ingresado no existe")
+               !await genreRepository.IsExist(id)).WithMessage("El Id Ingresado no existe")
                .WithName("Id del Genero");
         }
     }

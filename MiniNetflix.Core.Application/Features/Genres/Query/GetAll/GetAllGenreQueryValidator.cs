@@ -15,10 +15,7 @@ namespace MiniNetflix.Core.Application.Features.Genres.Query.GetAll
                 .MustAsync(async (query, cancellation) =>
                 {
                     var genreList = await genreRepository.GetAllAsync();
-                    if (genreList.Count == 0)
-                    {
-                        throw new ApiException("No hay generos creados", (int)HttpStatusCode.NotFound);
-                    }
+                    if (genreList.Count == 0) throw new ApiException("No hay generos creados", 404);                  
                     return true;
                 });
                 

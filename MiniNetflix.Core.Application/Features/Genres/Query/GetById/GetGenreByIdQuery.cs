@@ -4,6 +4,6 @@ using MiniNetflix.Core.Application.Dtos.Genres;
 
 namespace MiniNetflix.Core.Application.Features.Genres.Query.GetById
 {
-    public record GetGenreByIdQuery(int Id) : IRequest<Result<GenreDTO>> { }
+    public record GetGenreByIdQuery(int Id) : IRequest<Result<GenreDto>> { }
   
 }

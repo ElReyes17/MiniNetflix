@@ -16,12 +16,12 @@ namespace MiniNetflix.Core.Application.Features.Movies.Command.Update
          
             Movie movie = new Movie
             {
-                MovieId = request.UpdateMovieDTO.MovieId,
-                MovieName = request.UpdateMovieDTO.MovieName,
-                CoverImage = request.UpdateMovieDTO.CoverImage,
-                MovieLink = request.UpdateMovieDTO.MovieLink,
-                ProducerId = request.UpdateMovieDTO.ProducerId,
-                MovieGenres = request.UpdateMovieDTO.MovieGenres.Select(ids => new MovieGenre
+                MovieId = request.MovieId,
+                Name = request.MovieName,
+                CoverImage = request.CoverImage,
+                Link = request.MovieLink,
+                ProducerId = request.ProducerId,
+                MovieGenres = request.MovieGenres.Select(ids => new MovieGenre
                 {
                     GenreId = ids,
 

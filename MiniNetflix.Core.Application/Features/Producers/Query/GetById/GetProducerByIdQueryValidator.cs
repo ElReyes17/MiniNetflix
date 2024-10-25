@@ -1,21 +1,15 @@
-﻿
-
-using FluentValidation;
-using MiniNetflix.Core.Application.Exceptions;
+﻿using FluentValidation;
 using MiniNetflix.Core.Application.Interfaces.Repositories;
 
 namespace MiniNetflix.Core.Application.Features.Producers.Query.GetById
 {
     public class GetProducerByIdQueryValidator : AbstractValidator<GetProducerByIdQuery>
     {
-        public GetProducerByIdQueryValidator(IProducerRepository producerRepository)
+        public GetProducerByIdQueryValidator()
         {
             RuleFor(p => p.Id)
-                   .NotEmpty().WithMessage("El Id no puede estar vacío.")
-                   .NotNull().WithMessage("El Id no puede ser nulo.")
-                   .MustAsync(async (id, cancellationToken) =>
-                    await producerRepository.isExist(id))
-                   .WithMessage("No existe una productora con ese Id.");
+                   .NotEmpty().WithMessage("El Id de la productora no puede estar vacío.")
+                   .NotNull().WithMessage("El Id de la productora no puede ser nulo.");                   ;
                   
         }
     }

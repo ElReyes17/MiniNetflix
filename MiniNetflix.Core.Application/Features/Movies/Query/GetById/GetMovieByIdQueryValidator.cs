@@ -14,16 +14,13 @@ namespace MiniNetflix.Core.Application.Features.Movies.Query.GetById
                    .NotEmpty().WithMessage("El Id no puede estar vacío.")
                    .NotNull().WithMessage("El Id no puede ser nulo.")
                    .MustAsync(async (id, cancellationToken) =>
-                    await movieRepository.isExist(id))
+                    await movieRepository.IsExist(id))
                    .WithMessage("No existe una película con ese Id.")
                    .MustAsync(async (id, cancellationToken) =>
                    {
                         var movie = await movieRepository.FindByIdIncludeAsync(id);
-                        if (movie == null)
-                        {
-                           throw new ApiException("La película no pudo ser encontrada", 404);
-                        }
-                         return true;
+                        if (movie == null) throw new ApiException("La película no pudo ser encontrada", 404);                    
+                        return true;
                    });
 
 

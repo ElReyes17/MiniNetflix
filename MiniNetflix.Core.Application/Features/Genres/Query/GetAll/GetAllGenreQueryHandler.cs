@@ -8,20 +8,20 @@ using System.Net;
 
 namespace MiniNetflix.Core.Application.Features.Genres.Query.GetAll
 {
-    public class GetAllGenreQueryHandler(IGenreRepository genreRepository) : IRequestHandler<GetAllGenreQuery, Result<List<GenreDTO>>>
+    public class GetAllGenreQueryHandler(IGenreRepository genreRepository) : IRequestHandler<GetAllGenreQuery, Result<List<GenreDto>>>
     {
-        public async Task<Result<List<GenreDTO>>> Handle(GetAllGenreQuery request, CancellationToken cancellationToken)
+        public async Task<Result<List<GenreDto>>> Handle(GetAllGenreQuery request, CancellationToken cancellationToken)
         {
             var genreList = await genreRepository.GetAllAsync();
 
-            var response = genreList.Select(dto => new GenreDTO
+            var response = genreList.Select(dto => new GenreDto
             {
                 GenreId = dto.GenreId,
-                GenreName = dto.GenreName,
+                GenreName = dto.Name,
                 
             }).ToList();
 
-            return Result<List<GenreDTO>>.Success(response);          
+            return Result<List<GenreDto>>.Success(response);          
            
         }
     }

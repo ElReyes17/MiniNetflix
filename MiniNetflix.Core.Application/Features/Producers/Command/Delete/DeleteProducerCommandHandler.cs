@@ -12,13 +12,12 @@ namespace MiniNetflix.Core.Application.Features.Producers.Command.Delete
     {
         public async Task<Result<Unit>> Handle(DeleteProducerCommand request, CancellationToken cancellationToken)
         {
-            if (!await producerRepository.isExist(request.Id))  
-            {
-                throw new ApiException("El id no existe", 404);
-            }
+            if (!await producerRepository.IsExist(request.Id)) throw new ApiException("No existe una productora con ese Id", 404);
 
             var genre = await producerRepository.GetByIdAsync(request.Id);
 
+            if (genre == null) throw new ApiException("No se pudo encontrar esa productora", 404);
+           
             producerRepository.Delete(genre);
 
             await unitOfWork.SaveChangesAsync(cancellationToken);

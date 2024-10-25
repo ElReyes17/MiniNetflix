@@ -17,11 +17,11 @@ namespace MiniNetflix.Core.Application.Features.Movies.Command.Create
         {
             var mapMovie = new Movie
             {
-                MovieName = request.createMovieDTO.MovieName,
-                CoverImage = request.createMovieDTO.CoverImage,
-                MovieLink = request.createMovieDTO.MovieLink,
-                ProducerId = request.createMovieDTO.ProducerId,
-                MovieGenres = request.createMovieDTO.MovieGenres.Select(ids => new MovieGenre
+                Name = request.MovieName,
+                CoverImage = request.CoverImage,
+                Link = request.MovieLink,
+                ProducerId = request.ProducerId,
+                MovieGenres = request.MovieGenres.Select(ids => new MovieGenre
                 {
                     GenreId = ids,
 
@@ -32,10 +32,8 @@ namespace MiniNetflix.Core.Application.Features.Movies.Command.Create
             movieRepository.Add(mapMovie);
             await unitOfWork.SaveChangesAsync(cancellationToken);
 
-
             return Result<Unit>.Success(Unit.Value);
-
-            
+      
         }
     }
 }

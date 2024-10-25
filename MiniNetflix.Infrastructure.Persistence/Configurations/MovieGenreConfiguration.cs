@@ -10,18 +10,25 @@ namespace MiniNetflix.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<MovieGenre> builder)
         {
-            builder.ToTable("MovieGenre");
+            builder.ToTable("MovieGenres");
 
             builder.HasKey(mg => new {mg.MovieId, mg.GenreId});
 
-            builder.HasOne(mg => mg.Movie)
-                   .WithMany(mg => mg.MovieGenres)
-                   .HasForeignKey(mg => mg.MovieId);
-
             builder.HasQueryFilter(x => !x.IsDeleted);
 
-        }
+            //Relationships
 
+            builder.HasOne(mg => mg.Movie)
+                   .WithMany(mg => mg.MovieGenres)
+                   .HasForeignKey(mg => mg.MovieId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(mg => mg.Genre)
+                   .WithMany(mg => mg.MovieGenres)
+                   .HasForeignKey(mg => mg.GenreId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+        }
        
     }
 }

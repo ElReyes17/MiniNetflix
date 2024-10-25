@@ -10,12 +10,11 @@ namespace MiniNetflix.Core.Application.Features.Genres.Command.Delete
     {
         public async Task<Result<Unit>> Handle(DeleteGenreCommand request, CancellationToken cancellationToken)
         {
-            if(!await genreRepository.isExist(request.Id))
-            {
-                throw new ApiException("El id no existe", 404);
-            }
+            if(!await genreRepository.IsExist(request.Id)) throw new ApiException("El id no existe", 404);
 
             var genre = await genreRepository.GetByIdAsync(request.Id);
+
+            if (genre == null) throw new ApiException("El genero no se ha podido encontrar", 400);
 
             genreRepository.Delete(genre);
 

@@ -61,64 +61,39 @@ namespace MiniNetflix.Endpoints
 
         }
 
-        static async Task<Results<Ok<Result<List<GenreDTO>>>, BadRequest<string>>> Get(ISender mediator)
+        static async Task<Results<Ok<Result<List<GenreDto>>>, BadRequest<string>>> Get(ISender mediator)
         {
             var response =  await mediator.Send(new GetAllGenreQuery());
-
-            if (!response.IsSuccess)
-            {
-                return TypedResults.BadRequest(response.ErrorMessage);
-            }
-
+            if (!response.IsSuccess) return TypedResults.BadRequest(response.ErrorMessage);
             return TypedResults.Ok(response);
 
         }
 
-        static async Task<Results<Ok<Result<GenreDTO>>, BadRequest<string>>> GetById(ISender mediator, int id)
+        static async Task<Results<Ok<Result<GenreDto>>, BadRequest<string>>> GetById(ISender mediator, int id)
         {
             var response = await mediator.Send(new GetGenreByIdQuery(id));
-
-            if (!response.IsSuccess)
-            {
-                return TypedResults.BadRequest(response.ErrorMessage);
-            }
-
+            if (!response.IsSuccess) return TypedResults.BadRequest(response.ErrorMessage);
             return TypedResults.Ok(response);
         }
 
         static async Task<Results<Created, BadRequest<string>>> Create(ISender mediator, CreateGenreCommand command)
         {
             var request = await mediator.Send(command);
-
-            if (!request.IsSuccess)
-            {
-                return TypedResults.BadRequest(request.ErrorMessage);
-            }
-
+            if (!request.IsSuccess) return TypedResults.BadRequest(request.ErrorMessage);
             return TypedResults.Created();
         }
 
         static async Task<Results<NoContent, BadRequest<string>>> Update(ISender mediator, UpdateGenreCommand command)
         {
             var request = await mediator.Send(command);
-
-            if (!request.IsSuccess)
-            {
-                return TypedResults.BadRequest(request.ErrorMessage);
-            }
-
+            if (!request.IsSuccess)return TypedResults.BadRequest(request.ErrorMessage);
             return TypedResults.NoContent();
         }
 
         static async Task<Results<NoContent, BadRequest<string>>> Delete(ISender mediator, int id)
         {
             var request = await mediator.Send(new DeleteGenreCommand(id));
-
-            if (!request.IsSuccess)
-            {
-                return TypedResults.BadRequest(request.ErrorMessage);
-            }
-
+            if (!request.IsSuccess) return TypedResults.BadRequest(request.ErrorMessage);
             return TypedResults.NoContent();
         }
 

@@ -11,15 +11,12 @@ namespace MiniNetflix.Core.Application.Features.Genres.Command.Update
     {
         public async Task<Result<Unit>> Handle(UpdateGenreCommand request, CancellationToken cancellationToken)
         {
-            if(!await genreRepository.isExist(request.updateGenreDTO.GenreId))
-            {
-                throw new ApiException("El id no existe", 404);
-            }
-
+            if(!await genreRepository.IsExist(request.GenreId)) throw new ApiException("El id no existe", 404);
+          
             Genre genre = new Genre
             {
-                GenreId = request.updateGenreDTO.GenreId,
-                GenreName = request.updateGenreDTO.GenreName
+                GenreId = request.GenreId,
+                Name = request.GenreName
             };
 
             genreRepository.Update(genre, genre.GenreId);

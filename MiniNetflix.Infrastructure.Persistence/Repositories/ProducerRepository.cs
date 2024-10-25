@@ -5,12 +5,15 @@ using MiniNetflix.Infrastructure.Persistence.Context;
 
 namespace MiniNetflix.Infrastructure.Persistence.Repositories
 {
-    public class ProducerRepository(ApplicationContext dbContext) : BaseRepository<Producer>(dbContext), IProducerRepository 
+    public class ProducerRepository : BaseRepository<Producer>, IProducerRepository 
     {
-        public async Task<bool> isExist(int id)
+        private readonly ApplicationContext _dbContext;
+        public ProducerRepository(ApplicationContext dbContext) : base(dbContext)
         {
-            return await dbContext.Producer.AnyAsync(g => g.ProducerId == id);
+            _dbContext = dbContext;
         }
+        public async Task<bool> IsExist(int id) => await _dbContext.Producer.AnyAsync(g => g.ProducerId == id);
+
     }
     
 }

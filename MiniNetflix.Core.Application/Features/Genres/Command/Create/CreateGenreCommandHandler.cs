@@ -12,7 +12,7 @@ namespace MiniNetflix.Core.Application.Features.Genres.Command.Create
         {
             var mapGenre = new Genre
             {
-                GenreName = request.createGenreDTO.GenreName
+                Name = request.GenreName
             };
                      
             genreRepository.Add(mapGenre);

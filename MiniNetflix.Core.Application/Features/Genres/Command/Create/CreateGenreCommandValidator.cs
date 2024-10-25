@@ -8,7 +8,7 @@ namespace MiniNetflix.Core.Application.Features.Genres.Command.Create
     {
         public CreateGenreCommandValidator()
         {
-            RuleFor(g => g.createGenreDTO.GenreName)
+            RuleFor(g => g.GenreName)
                 .NotEmpty().WithMessage("El nombre del genero no puede estar vacio")
                 .NotNull().WithMessage("El nombre del genero no puede ser nulo");
                  

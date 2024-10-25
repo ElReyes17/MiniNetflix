@@ -5,25 +5,25 @@ using MiniNetflix.Core.Application.Interfaces.Repositories;
 
 namespace MiniNetflix.Core.Application.Features.Movies.Query.GetAll
 {
-    public class GetAllMovieQueryHandler(IMovieRepository movieRepository) : IRequestHandler<GetAllMovieQuery, Result<List<MovieDTO>>>
+    public class GetAllMovieQueryHandler(IMovieRepository movieRepository) : IRequestHandler<GetAllMovieQuery, Result<List<MovieDto>>>
     {
-        public async Task<Result<List<MovieDTO>>> Handle(GetAllMovieQuery request, CancellationToken cancellationToken)
+        public async Task<Result<List<MovieDto>>> Handle(GetAllMovieQuery request, CancellationToken cancellationToken)
         {
             var movieList = await movieRepository.GetAllWithIncludeAsync();
 
-            var response = movieList.Select(dto => new MovieDTO
+            var response = movieList.Select(dto => new MovieDto
             {
                 MovieId = dto.MovieId,
-                MovieName = dto.MovieName,
+                MovieName = dto.Name,
                 CoverImage = dto.CoverImage,
-                MovieLink = dto.MovieLink,
+                MovieLink = dto.Link,
                 ProducerId = dto.ProducerId,               
-                ProducerName = dto.Producer.ProducerName,
-                MovieGenres = dto.MovieGenres.Select(a => a.Genre.GenreName).ToList(),
+                ProducerName = dto.Producer.Name,
+                MovieGenres = dto.MovieGenres.Select(a => a.Genre.Name).ToList(),
 
             }).ToList();
 
-            return Result<List<MovieDTO>>.Success(response);
+            return Result<List<MovieDto>>.Success(response);
         }
     }
 }

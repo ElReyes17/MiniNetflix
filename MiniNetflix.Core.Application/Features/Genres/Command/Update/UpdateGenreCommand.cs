@@ -1,12 +1,15 @@
 ﻿
-
 using MediatR;
 using MiniNetflix.Core.Application.Common;
-using MiniNetflix.Core.Application.Dtos.Genres;
+
 
 namespace MiniNetflix.Core.Application.Features.Genres.Command.Update
 {
-    public record UpdateGenreCommand(UpdateGenreDTO updateGenreDTO) : IRequest<Result<Unit>> { }
+    public record UpdateGenreCommand : IRequest<Result<Unit>> 
+    {
+        public int GenreId { get; set; }
+        public string GenreName { get; set; } = string.Empty;
+    }
     
     
 }

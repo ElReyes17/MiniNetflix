@@ -8,14 +8,12 @@ namespace MiniNetflix.Core.Application.Features.Producers.Command.Update
     {
         public UpdateProducerCommandValidator(IProducerRepository producerRepository)
         {
-            RuleFor(g => g.UpdateProducerDTO.ProducerId)
+            RuleFor(g => g.ProducerId)
                 .NotEmpty().WithMessage("El Id no puede estar vacio")
-                .NotNull().WithMessage("El Id no puede Ser nulo")
-                .MustAsync(async (id, cancellationToken) =>
-                !await producerRepository.isExist(id)).WithMessage("El Id Ingresado no existe")
+                .NotNull().WithMessage("El Id no puede Ser nulo")               
                 .WithName("Id de la productora");
 
-            RuleFor(g => g.UpdateProducerDTO.ProducerName)
+            RuleFor(g => g.ProducerName)
               .NotEmpty().WithMessage("El nombre de la productora no puede estar vacio")
               .NotNull().WithMessage("El nombre de la productora no puede ser nulo");
         }

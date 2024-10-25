@@ -9,12 +9,10 @@ namespace MiniNetflix.Middlewares
     public class ErrorHandlerMiddleware
     {
         private readonly RequestDelegate _next;
-
         public ErrorHandlerMiddleware(RequestDelegate next)
         {
             _next = next;
         }
-
         public async Task Invoke(HttpContext context)
         {
             try
@@ -30,7 +28,7 @@ namespace MiniNetflix.Middlewares
                 switch (error)
                 {
                     case ApiException e:
-                        // custom application error
+                
                         switch (e.ErrorCode)
                         {
                             case (int)HttpStatusCode.BadRequest:

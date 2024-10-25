@@ -7,7 +7,6 @@ namespace MiniNetflix.Core.Application.Exceptions
         {
             ErrorCode = errorCode;
         }
-
         public int ErrorCode { get; }
     }
     

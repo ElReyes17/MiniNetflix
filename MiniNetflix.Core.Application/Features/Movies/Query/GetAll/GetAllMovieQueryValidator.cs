@@ -14,10 +14,7 @@ namespace MiniNetflix.Core.Application.Features.Movies.Query.GetAll
                  RuleFor(x => x)
                  .MustAsync(async (query, cancellation) => {
                     var movieList = await movieRepository.GetAllAsync();
-                    if (movieList.Count == 0)
-                    {
-                        throw new ApiException("No hay películas creadas", (int)HttpStatusCode.NotFound);
-                    }
+                    if (movieList.Count == 0) throw new ApiException("No hay películas creadas", 404);                     
                     return true;
                   })
                  .WithMessage("La lista de películas está vacía");

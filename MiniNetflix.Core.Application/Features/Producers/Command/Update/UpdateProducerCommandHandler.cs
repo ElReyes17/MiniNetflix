@@ -12,15 +12,12 @@ namespace MiniNetflix.Core.Application.Features.Producers.Command.Update
     {
         public async Task<Result<Unit>> Handle(UpdateProducerCommand request, CancellationToken cancellationToken)
         {
-            if (!await producerRepository.isExist(request.UpdateProducerDTO.ProducerId))
-            {
-                throw new ApiException("El id no existe", 404);
-            }
-
+            if (!await producerRepository.IsExist(request.ProducerId)) throw new ApiException("El id no existe", 404);
+            
             Producer producer = new Producer
             {
-                ProducerId = request.UpdateProducerDTO.ProducerId,
-                ProducerName = request.UpdateProducerDTO.ProducerName
+                ProducerId = request.ProducerId,
+                Name = request.ProducerName
             };
 
             producerRepository.Update(producer, producer.ProducerId);

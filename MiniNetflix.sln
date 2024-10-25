@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniNetflix", "MiniNetflix\MiniNetflix.csproj", "{BAA003AB-F822-42A6-BB3E-790BB39A80C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniNetflix.API", "MiniNetflix\MiniNetflix.API.csproj", "{BAA003AB-F822-42A6-BB3E-790BB39A80C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{156C1BC4-078B-41C9-8388-72CF8F051A35}"
 EndProject
@@ -17,11 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{F745BA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniNetflix.Core.Application", "MiniNetflix.Core.Application\MiniNetflix.Core.Application.csproj", "{66383695-4907-44D4-8629-41BAEE2F9FAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniNetflix.Core.Domain", "MiniNetflix.Core.Domain\MiniNetflix.Core.Domain.csproj", "{611EDDB2-5CFF-4A87-AC66-852DA96C7C12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniNetflix.Core.Domain", "MiniNetflix.Core.Domain\MiniNetflix.Core.Domain.csproj", "{611EDDB2-5CFF-4A87-AC66-852DA96C7C12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniNetflix.Infrastructure.Persistence", "MiniNetflix.Infrastructure.Persistence\MiniNetflix.Infrastructure.Persistence.csproj", "{0C99AA0A-82B7-4F31-8A8B-7DBC8E927835}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniNetflix.Infrastructure.Persistence", "MiniNetflix.Infrastructure.Persistence\MiniNetflix.Infrastructure.Persistence.csproj", "{0C99AA0A-82B7-4F31-8A8B-7DBC8E927835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniNetflix.Infrastructure.Identity", "MiniNetflix.Infrastructure.Identity\MiniNetflix.Infrastructure.Identity.csproj", "{F844A22A-1609-4275-AB03-403993916353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniNetflix.Infrastructure.Identity", "MiniNetflix.Infrastructure.Identity\MiniNetflix.Infrastructure.Identity.csproj", "{F844A22A-1609-4275-AB03-403993916353}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,7 +4,7 @@ namespace MiniNetflix.Core.Application.Interfaces.Repositories
 {
     public interface IProducerRepository : IBaseRepository<Producer> 
     {
-        Task<bool> isExist(int id);
+        Task<bool> IsExist(int id);
     }
     
 }

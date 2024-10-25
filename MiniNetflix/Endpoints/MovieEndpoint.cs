@@ -61,64 +61,39 @@ namespace MiniNetflix.Endpoints
 
         }
 
-        static async Task<Results<Ok<Result<List<MovieDTO>>>, BadRequest<string>>> Get(ISender mediator)
+        static async Task<Results<Ok<Result<List<MovieDto>>>, BadRequest<string>>> Get(ISender mediator)
         {
             var response = await mediator.Send(new GetAllMovieQuery());
-
-            if (!response.IsSuccess)
-            {
-                return TypedResults.BadRequest(response.ErrorMessage);
-            }
-
+            if (!response.IsSuccess) return TypedResults.BadRequest(response.ErrorMessage);
             return TypedResults.Ok(response);
 
         }
 
-        static async Task<Results<Ok<Result<MovieDTO>>, BadRequest<string>>> GetById(ISender mediator, int id)
+        static async Task<Results<Ok<Result<MovieDto>>, BadRequest<string>>> GetById(ISender mediator, int id)
         {            
             var response = await mediator.Send(new GetMovieByIdQuery(id));
-
-            if(!response.IsSuccess)
-            {
-                return TypedResults.BadRequest(response.ErrorMessage);
-            }
-
+            if(!response.IsSuccess) return TypedResults.BadRequest(response.ErrorMessage);
             return TypedResults.Ok(response);
         }
 
         static async Task<Results<Created, BadRequest<string>>> Create(ISender mediator, CreateMovieCommand command)
         {
             var request = await mediator.Send(command);
-
-            if (!request.IsSuccess)
-            {
-                return TypedResults.BadRequest(request.ErrorMessage);    
-            }         
-
+            if (!request.IsSuccess) return TypedResults.BadRequest(request.ErrorMessage);    
             return TypedResults.Created();
         }
 
         static async Task<Results<NoContent, BadRequest<string>>> Update(ISender mediator, UpdateMovieCommand command)
         {
             var request = await mediator.Send(command);
-
-            if (!request.IsSuccess)
-            {
-                return TypedResults.BadRequest(request.ErrorMessage);
-            }
-
+            if (!request.IsSuccess) return TypedResults.BadRequest(request.ErrorMessage);
             return TypedResults.NoContent();
         }
 
         static async Task<Results<NoContent, BadRequest<string>>> Delete(ISender mediator, int id)
         {
             var request = await mediator.Send(new DeleteMovieCommand(id));
-
-            if (!request.IsSuccess)
-            {
-                return TypedResults.BadRequest(request.ErrorMessage);
-            }
-
+            if (!request.IsSuccess)return TypedResults.BadRequest(request.ErrorMessage);
             return TypedResults.NoContent();
         }
 

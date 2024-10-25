@@ -14,7 +14,7 @@ namespace MiniNetflix.Core.Application.Features.Movies.Command.Delete
                 .NotEmpty().WithMessage("El Id no puede estar vacio")
                 .NotNull().WithMessage("El Id no puede Ser nulo")
                 .MustAsync(async (id, cancellationToken) =>
-                !await movieRepository.isExist(id)).WithMessage("El Id Ingresado no existe")
+                !await movieRepository.IsExist(id)).WithMessage("El Id Ingresado no existe")
                 .WithName("Id de la Pelicula");
             
         }

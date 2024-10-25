@@ -1,6 +1,4 @@
-﻿
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MiniNetflix.Core.Domain.Entities;
 
@@ -10,16 +8,15 @@ namespace MiniNetflix.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Genre> builder)
         {
-            builder.ToTable("Genre");
+            builder.ToTable("Genres");
 
             builder.HasKey(genre => genre.GenreId);
 
-            builder.HasQueryFilter(x => !x.IsDeleted);
+            builder.Property(genre => genre.Name)
+                   .IsRequired()
+                   .HasMaxLength(100);
 
-            builder.Property(genre => genre.GenreName)
-           .IsRequired()
-           .HasMaxLength(100);
-
+            builder.HasQueryFilter(x => !x.IsDeleted);           
 
         }
     }

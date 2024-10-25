@@ -50,7 +50,6 @@ namespace MiniNetflix.Extensions
 
                         }, new List<string>()
                     }
-
                 });
             });
         }

@@ -5,14 +5,15 @@ using MiniNetflix.Infrastructure.Persistence.Context;
 
 namespace MiniNetflix.Infrastructure.Persistence.Repositories
 {
-    public class GenreRepository(ApplicationContext dbContext) : BaseRepository<Genre>(dbContext), IGenreRepository 
+    public class GenreRepository : BaseRepository<Genre>, IGenreRepository 
     {
-
-        public async Task<bool> isExist(int id)
+        private readonly ApplicationContext _dbContext;
+        public GenreRepository(ApplicationContext dbContext) : base(dbContext)
         {
-            return await dbContext.Genre.AnyAsync(g => g.GenreId == id);
+            _dbContext = dbContext;
         }
-
+        public async Task<bool> IsExist(int id) => await _dbContext.Genre.AnyAsync(g => g.GenreId == id);
+       
     }
     
 }

@@ -1,24 +1,26 @@
 ﻿using MediatR;
 using MiniNetflix.Core.Application.Common;
 using MiniNetflix.Core.Application.Dtos.Genres;
+using MiniNetflix.Core.Application.Exceptions;
 using MiniNetflix.Core.Application.Interfaces.Repositories;
 
 namespace MiniNetflix.Core.Application.Features.Genres.Query.GetById
 {
-    public class GetGenreByIdQueryHandler(IGenreRepository genreRepository) : IRequestHandler<GetGenreByIdQuery, Result<GenreDTO>>
+    public class GetGenreByIdQueryHandler(IGenreRepository genreRepository) : IRequestHandler<GetGenreByIdQuery, Result<GenreDto>>
     {
-        public async Task<Result<GenreDTO>> Handle(GetGenreByIdQuery request, CancellationToken cancellationToken)
-        {
-         
+        public async Task<Result<GenreDto>> Handle(GetGenreByIdQuery request, CancellationToken cancellationToken)
+        {   
             var getGenre = await genreRepository.GetByIdAsync(request.Id);
 
-            var response = new GenreDTO
+            if (getGenre == null) throw new ApiException("El genero no pudo ser encontrado", 404);
+
+            var response = new GenreDto
             {
                 GenreId = getGenre.GenreId,
-                GenreName = getGenre.GenreName
+                GenreName = getGenre.Name
             };
 
-            return Result<GenreDTO>.Success(response);  
+            return Result<GenreDto>.Success(response);  
         }
     }
 }

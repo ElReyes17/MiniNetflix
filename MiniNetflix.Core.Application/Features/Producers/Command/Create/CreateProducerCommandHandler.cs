@@ -14,7 +14,7 @@ namespace MiniNetflix.Core.Application.Features.Producers.Command.Create
         {
             var mapProducer = new Producer
             {
-                ProducerName = request.createProducerDTO.ProducerName
+                Name = request.ProducerName
             };
 
             producerRepository.Add(mapProducer);
